@@ -127,7 +127,7 @@ from transformer_model import TransformerMLP  # 你保存模型的类文件
 import numpy as np
 
 st.set_page_config(page_title="T-prediction", layout="wide")
-st.title("Mixture toxicity prediction")
+st.title("Mixture Toxicity Prediction")
 
 uploaded_file = st.file_uploader("上传待预测的 Excel 文件", type=["xlsx"])
 
