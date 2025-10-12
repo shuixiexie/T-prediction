@@ -11,9 +11,6 @@ from typing import List, Dict, Any
 
 # descriptor libraries
 from padelpy import from_smiles
-from rdkit import Chem
-from rdkit.Chem import Descriptors
-
 
 import tempfile
 
