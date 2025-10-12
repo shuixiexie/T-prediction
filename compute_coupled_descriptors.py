@@ -14,10 +14,9 @@ from padelpy import from_smiles
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from mordred import Calculator, descriptors as mordred_descriptors
-import pandas as pd
-import numpy as np
+
 import tempfile
-import os
+
 from padelpy import padeldescriptor
 
 selected_columns = [
@@ -33,12 +32,6 @@ selected_columns = [
 # -------------------
 # 辅助函数
 # -------------------
-import pandas as pd
-import numpy as np
-
-import pandas as pd
-import numpy as np
-
 def compute_coupled_descriptors(file_path: str, output_path: str = None, tol: float = 1e-6) -> pd.DataFrame:
     # ------------------
     # 内部验证 Excel 文件
