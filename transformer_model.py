@@ -39,33 +39,6 @@ class TransformerMLP(nn.Module):
         return self.fc(x)
 
 
-def load_and_preprocess_data(file_path, train_sheet, test_sheet, target_column):
-    
-    train_df = pd.read_excel(file_path, sheet_name=train_sheet)
-    test_df = pd.read_excel(file_path, sheet_name=test_sheet)
-
-    
-    X_train = train_df.drop(columns=[target_column])
-    y_train = train_df[target_column]
-    X_test = test_df.drop(columns=[target_column])
-    y_test = test_df[target_column]
-
-    
-    combined = pd.concat([X_train, X_test], axis=0)
-    combined_encoded = pd.get_dummies(combined)
-
-    
-    X_train_encoded = combined_encoded.iloc[:X_train.shape[0], :]
-    X_test_encoded = combined_encoded.iloc[X_train.shape[0]:, :]
-
-    
-    return (
-        torch.tensor(X_train_encoded.values, dtype=torch.float32),
-        torch.tensor(y_train.values, dtype=torch.float32),
-        torch.tensor(X_test_encoded.values, dtype=torch.float32),
-        torch.tensor(y_test.values, dtype=torch.float32)
-    )
-
 
 
 
