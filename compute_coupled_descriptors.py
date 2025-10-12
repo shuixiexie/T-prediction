@@ -13,7 +13,7 @@ from typing import List, Dict, Any
 from padelpy import from_smiles
 from rdkit import Chem
 from rdkit.Chem import Descriptors
-from mordred import Calculator, descriptors as mordred_descriptors
+
 
 import tempfile
 
