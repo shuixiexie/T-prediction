@@ -97,4 +97,21 @@ def train_transformer_mlp_model(X_train, y_train, input_dim, epochs=100, batch_s
         train_predictions = epoch_predictions
     model.load_state_dict(best_model)
     return model, train_predictions
-
+def evaluate_model(model, X, y, dataset_name, output_path):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model.eval()
+    with torch.no_grad():
+        predictions = model(X.to(device)).cpu().numpy().flatten()
+    r2 = r2_score(y.numpy(), predictions)
+    rmse = np.sqrt(mean_squared_error(y.numpy(), predictions))
+    mae = mean_absolute_error(y.numpy(), predictions)
+    print(f"{dataset_name} Set Evaluation:")
+    print(f"  R2 Score: {r2:.4f}")
+    print(f"  RMSE: {rmse:.4f}")
+    print(f"  MAE: {mae:.4f}")
+    results_df = pd.DataFrame({
+        "Actual": y.numpy(),
+        "Predicted": predictions
+    })
+    results_df.to_excel(output_path, index=False)
+    return {"R2": r2, "RMSE": rmse, "MAE": mae}
