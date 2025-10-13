@@ -9,8 +9,8 @@ import time
 def keep_alive():
     while True:
         try:
-            requests.get("你的应用URL")
-            time.sleep(3000)  # 每5分钟访问一次
+            requests.get("https://t-prediction-jlrh43jexy8yqjypunwgnn.streamlit.app/")
+            time.sleep(3000) 
         except:
             pass
 
