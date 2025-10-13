@@ -2,6 +2,25 @@ import streamlit as st
 import pandas as pd
 from compute_coupled_descriptors import compute_coupled_descriptors
 
+import requests
+import threading
+import time
+
+def keep_alive():
+    while True:
+        try:
+            requests.get("你的应用URL")
+            time.sleep(3000)  # 每5分钟访问一次
+        except:
+            pass
+
+
+if __name__ == "__main__":
+    thread = threading.Thread(target=keep_alive)
+    thread.daemon = True
+    thread.start()
+
+
 # 设置网页配置
 st.set_page_config(
     page_title="T-prediction",  # 浏览器标签页标题
